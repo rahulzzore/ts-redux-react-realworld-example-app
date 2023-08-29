@@ -8,7 +8,7 @@ export function UserInfo({
   onEditSettings,
 }: {
   user: Profile;
-  disabled: boolean;
+  disabled?: boolean;
   onFollowToggle?: () => void;
   onEditSettings?: () => void;
 }) {
@@ -25,12 +25,12 @@ export function UserInfo({
             <p>{bio}</p>
 
             {sessionUsername === username ? (
-              <EditProfileButton onClick={onEditSettings} disabled={disabled} />
+              <EditProfileButton onClick={onEditSettings} disabled={!!disabled} />
             ) : (
               <ToggleFollowButton
                 following={following}
                 username={username}
-                disabled={disabled}
+                disabled={!!disabled}
                 onClick={onFollowToggle}
               />
             )}
